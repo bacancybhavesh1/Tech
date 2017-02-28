@@ -19,7 +19,7 @@ import {Actions, Scene, Router} from 'react-native-router-flux';
 
 var deviceHeight = Dimensions.get('window').height;
 var deviceWidth = Dimensions.get('window').width;
-var loginBackgroundImage = require('../images/backgroundImage.jpg');
+var commonBackgroundImage = require('../images/backgroundImage.jpg');
 var userSummary = require('../images/home/userSummary.png');
 var ourPartner = require('../images/home/ourPartner.png');
 var refill = require('../images/home/refill.png');
@@ -29,26 +29,25 @@ var logout =require('../images/home/logout.png');
 export default class Home extends Component {
     constructor(props){
         super(props);
-        console.log('props', this.props.userData);
     }
 
     render(){
         return(
             <View>
-                <Image  style={styles.backgroundImage} source={loginBackgroundImage} resizeMode="cover">
+                <Image  style={styles.backgroundImage} source={commonBackgroundImage} resizeMode="cover">
                     <View style={styles.titleText}>
                         <Text style={styles.titleLable}>Welcome to O3 Telecom App</Text>
                     </View> 
                     <View style={styles.mainView}>
                         <View style={styles.firstColView}>
                             <View style={styles.userSummaryView}>
-                                <TouchableOpacity style={styles.userSummaryTouch}>
+                                <TouchableOpacity style={styles.userSummaryTouch} onPress={ (data) => { Actions.userSummary({userData: this.props.userData}) }}>
                                     <Image style={styles.userSummaryImage} source={userSummary} resizeMode="cover" />
                                     <Text style={styles.userSummaryText}>User Summary</Text>
                                 </TouchableOpacity>
                             </View>
                             <View style={styles.refillView}>
-                                <TouchableOpacity style={styles.refillTouch}>
+                                <TouchableOpacity style={styles.refillTouch} onPress={ (data) => { Actions.refill({userData: this.props.userData}) }}>
                                     <Image style={styles.refillImage} source={refill} resizeMode="cover" />
                                     <Text style={styles.refillText}>Refill</Text>
                                 </TouchableOpacity>

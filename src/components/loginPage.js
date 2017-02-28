@@ -31,7 +31,7 @@ var twitter = require('../images/twitter.png');
 var facebook = require('../images/facebook.png');
 var youtube = require('../images/youtube.png');
 var mail = require('../images/mail.jpeg');
-var defaultSigninText = 'Sign In';
+var defaultSigninText = 'Sign in';
 export default class Login extends Component {
     constructor(props){
         super(props);
