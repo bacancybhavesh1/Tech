@@ -27,13 +27,14 @@ export default class Refill extends Component {
             refillBtnText: defaultRefillText
         };
         this.refillData = this.refillData.bind(this);
+        this.handleData = this.handleData.bind(this);
     }
 
     refillData(){
         var username = this.props.userData['UserID'];
         var password = this.props.userData['Password'];
 
-        if(this.state.voucherData.length < 12){
+        if(this.state.voucherData.length < 16){
             Alert.alert( 'Error', 'Please enter valid number');
         }else{
             var status = 'Loading...';
@@ -66,6 +67,14 @@ export default class Refill extends Component {
         
     }
 
+    handleData(value){
+        if (/^[0-9]{1,16}$/.test(value)){
+            this.setState({ 
+                voucherData: value
+            });
+        }
+    }
+
     render(){
         return(
             <View>
@@ -78,13 +87,13 @@ export default class Refill extends Component {
                     </View>
                     <View style={styles.inputs}>
                         <View style={styles.inputsColumn}>
-                            <Text style={styles.textLabel}>Voucher Name :</Text>
+                            <Text style={styles.textLabel}>Voucher Number :</Text>
                             <View style={styles.inputRow}>
                                 <TextInput type="text" 
-                                    onChangeText={(voucherData) => this.setState({voucherData})} 
+                                    onChangeText={this.handleData.bind(this)} 
                                     style={styles.textInput} 
                                     underlineColorAndroid="transparent" 
-                                    maxLength={12}
+                                    maxLength={16}
                                     value={this.state.voucherData} />
                             </View>
                         </View>
