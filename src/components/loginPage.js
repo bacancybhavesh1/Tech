@@ -268,6 +268,7 @@ const styles = StyleSheet.create({
     },
     textInput:{
         height:35,
+        width: deviceWidth - (deviceWidth * 10) / 100,
         marginRight:(deviceWidth * 5) / 100,
         marginLeft:(deviceWidth * 5) / 100,
         backgroundColor: 'white',
