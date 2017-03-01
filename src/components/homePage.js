@@ -96,6 +96,7 @@ const styles = StyleSheet.create({
         position:'absolute',
         top:20,
         right:20,
+        backgroundColor:'transparent'
     },
 
     mainView:{

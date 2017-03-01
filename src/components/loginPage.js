@@ -257,7 +257,8 @@ const styles = StyleSheet.create({
     },
     textLabel:{
         color: 'white',
-        marginLeft:25
+        marginLeft:25,
+        backgroundColor:'transparent'
     },
     inputRow:{
         height: 40,
@@ -266,7 +267,9 @@ const styles = StyleSheet.create({
         alignItems:'center'
     },
     textInput:{
-        width: deviceWidth-50,
+        height:35,
+        marginRight:(deviceWidth * 5) / 100,
+        marginLeft:(deviceWidth * 5) / 100,
         backgroundColor: 'white',
         borderWidth: 1,
         borderRadius:10

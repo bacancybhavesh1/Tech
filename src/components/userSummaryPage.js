@@ -144,12 +144,14 @@ const styles = StyleSheet.create({
     listText1:{
         color:'#B86B08',
         fontSize:15,
-        marginLeft:10
+        marginLeft:10,
+        backgroundColor:'transparent'
     },
     listText2:{
         color:'white',
         fontSize:15,
-        marginLeft:10   
+        marginLeft:10,
+        backgroundColor:'transparent'
     },
     listItemRow:{
         flexDirection:'row'

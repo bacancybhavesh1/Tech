@@ -68,7 +68,7 @@ export default class Refill extends Component {
     }
 
     handleData(value){
-        if (/^[0-9]{1,16}$/.test(value)){
+        if (/^[0-9]{0,16}$/.test(value)){
             this.setState({ 
                 voucherData: value
             });
@@ -138,6 +138,7 @@ const styles = StyleSheet.create({
         color: 'white',
         marginTop:20,
         marginLeft:(deviceWidth  * 10) / 100,
+        backgroundColor:'transparent'
     },
      refillBtn:{
         flexDirection: "row",
@@ -158,8 +159,10 @@ const styles = StyleSheet.create({
         color:'black',
         fontWeight: 'bold',
     },
-     textInput:{
-        width: deviceWidth-50,
+    textInput:{
+        height:35,
+        marginRight:(deviceWidth * 5) / 100,
+        marginLeft:(deviceWidth * 5) / 100,
         backgroundColor: 'white',
         borderWidth: 1,
         borderRadius:10
