@@ -13,6 +13,7 @@ import {
 } from 'react-native';
 import {Actions, Scene, Router} from 'react-native-router-flux';
 import refillVouchers from '../apiUtill/refillApi.js';
+import parse from 'xml-parser';
 
 var deviceHeight = Dimensions.get('window').height;
 var deviceWidth = Dimensions.get('window').width;
@@ -34,18 +35,17 @@ export default class Refill extends Component {
         var username = this.props.userData['UserID'];
         var password = this.props.userData['Password'];
 
-        if(this.state.voucherData.length < 16){
-            Alert.alert( 'Error', 'Please enter valid number');
-        }else{
             var status = 'Loading...';
             this.setState({
                 refillBtnText: status
             });
             refillVouchers.refillVoucher(this.state.voucherData, username, password)
             .then((response) => {
-                console.log(response);
                 if(response.status == 200) {
-                    Alert.alert( 'Success', 'Refill voucher successfully.');
+                    var result = parse(response._bodyText);
+                    var status = result.root.children[0].attributes.value;
+                    var msg = result.root.children[2].attributes.value;
+                    Alert.alert( ''+status, ''+msg);
                     this.setState({
                         refillBtnText: defaultRefillText
                     });
@@ -62,9 +62,6 @@ export default class Refill extends Component {
                 });
                 console.log('from class ', error); 
             });
-        }
-
-        
     }
 
     handleData(value){

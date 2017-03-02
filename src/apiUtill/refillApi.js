@@ -3,17 +3,16 @@ var base64 = require('base-64');
  var refillVouchers= {
     refillVoucher: async function(voucherData, username, password){
         var parmas = 
-            '?Page:OfferPurchaseByVoucher'
-            +'&Update:1'
-            +'&VoucherName:'+ voucherData
-            +'&PIN:0'
-            +'&UserID='+username
-            +'&Password:'+password
-            +'&ConfirmPassword:'+password
-        ;
+            '?Page=OfferPurchaseByVoucher'
+            +'&Update=1'
+            +'&VoucherName='+voucherData
+            +'&PIN=0'
+            +'&UserId='+username
+            +'&Password='+password
+            +'&ConfirmPassword='+password;
         var auth = 'Basic ' + base64.encode(username+':'+password);
         return fetch(apiUrl+parmas,{
-            method: 'POST', 
+            method: 'GET', 
             headers: { 
                 'Authorization': auth,
                 'Accept': 'application/json',
