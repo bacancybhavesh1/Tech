@@ -44,8 +44,14 @@ export default class Refill extends Component {
                 if(response.status == 200) {
                     var result = parse(response._bodyText);
                     var status = result.root.children[0].attributes.value;
-                    var msg = result.root.children[2].attributes.value;
-                    Alert.alert( ''+status, ''+msg);
+                    var msg;
+                    if(status == 'Error'){
+                        msg  = result.root.children[2].attributes.value;
+                        Alert.alert( ''+status, ''+msg);
+                    }else{
+                        Alert.alert( ''+status, 'Refill voucher successfully.');
+                    }
+                    
                     this.setState({
                         refillBtnText: defaultRefillText
                     });
